@@ -81,102 +81,108 @@ function App() {
     return (
         <>
             <div className="outer-container">
-            <nav>
-                <div className="button-wrapper">
-                    <h3 className="sorting-title">sort by:</h3>
-                    <Button
-                        buttonType="button"
-                        variant="sort-by-priority"
-                        handleClick= {() => toggleSort(sorted, todos, setTodos, setSorted)}
-                    >priority</Button>
+                <div className='page-container-desktop'>
+
+                    <div className='page-left-wrapper-desktop'>
+                        <nav className='left-one'>
+                            <div className="button-wrapper">
+                                <h3 className="sorting-title">sort by:</h3>
+                                <Button
+                                    buttonType="button"
+                                    variant="sort-by-priority"
+                                    handleClick= {() => toggleSort(sorted, todos, setTodos, setSorted)}
+                                >priority</Button>
 
 
-                                        <Button
-                        buttonType="button"
-                        variant="sort-by-completion"
-                        handleClick={() => sortByCompletion(todos, setTodos, sorted, setSorted)}
-                    >status</Button>
+                                                    <Button
+                                    buttonType="button"
+                                    variant="sort-by-completion"
+                                    handleClick={() => sortByCompletion(todos, setTodos, sorted, setSorted)}
+                                >status</Button>
 
-                    <Button
-                        buttonType="button"
-                        variant="sort-by-timestamp"
-                        handleClick={() => sortOnTimestamp(todos, setTodos, sorted, setSorted)}
-                    >date</Button>
+                                <Button
+                                    buttonType="button"
+                                    variant="sort-by-timestamp"
+                                    handleClick={() => sortOnTimestamp(todos, setTodos, sorted, setSorted)}
+                                >date</Button>
 
-                </div>
+                            </div>
 
-                <SearchField
-                    type="text"
-                    placeholder=""
-                    value={searchInput}
-                    onChangeHandler={(e) => setSearchInput(e.target.value)}
-                    keyDown={handleKeyPress}
-                />
-
-                {foundTodo && (
-                    <div className="search-result-container">
-                         search result: "{foundTodo.title}" this task is {foundTodo ? "pending" : "complete"}
-                    </div>
-                )}
-
-
-            </nav>
-                <aside>
-                    <form className="form-container" onSubmit={addTodo}>
-
-                    <InputElement
-                        type="text"
-                        title="title"
-                        value={inputField}
-                        eventHandler={(e) => setInputfield(e.target.value)}
-                    />
-
-                        <SelectElement
-                            name="priority"
-                            value={priority || selectedPriority}
-                            placeholder="priority"
-                            options={[
-                                { value: 3, label: 'low' },
-                                { value: 2, label: 'medium' },
-                                { value: 1, label: 'high' }
-                            ]}
-                            onChange={(e) => {
-                                setSelectedPriority(e.target.value);
-                                setPriority(e.target.value);
-                            }}
-                        />
-
-                    <Button
-                        buttonType="submit"
-                        variant="submit"
-                    >+ Add new task
-                    </Button>
-
-                </form>
-                </aside>
-            <main>
-
-                <div className="list-wrapper">
-
-                    <h1>Tasks</h1>
-
-                    {todos.map((todo) => {
-                        return (
-                            <ListItem
-                                key={todo.id}
-                                id={todo.id}
-                                status={todo.completed}
-                                title={todo.title}
-                                variant={todo.className}
-                                toggleCompleted={toggleOneCompleted}
-                                deleteTask={deleteTask}
+                            <SearchField
+                                type="text"
+                                placeholder=""
+                                value={searchInput}
+                                onChangeHandler={(e) => setSearchInput(e.target.value)}
+                                keyDown={handleKeyPress}
                             />
-                        );
-                    })}
+
+                            {foundTodo && (
+                                <div className="search-result-container">
+                                     search result: "{foundTodo.title}" this task is {foundTodo ? "pending" : "complete"}
+                                </div>
+                            )}
+
+
+                        </nav>
+                        <aside className='left-two'>
+                                <form className="form-container" onSubmit={addTodo}>
+
+                                <InputElement
+                                    type="text"
+                                    title="title"
+                                    value={inputField}
+                                    eventHandler={(e) => setInputfield(e.target.value)}
+                                />
+
+                                    <SelectElement
+                                        name="priority"
+                                        value={priority || selectedPriority}
+                                        placeholder="priority"
+                                        options={[
+                                            { value: 3, label: 'low' },
+                                            { value: 2, label: 'medium' },
+                                            { value: 1, label: 'high' }
+                                        ]}
+                                        onChange={(e) => {
+                                            setSelectedPriority(e.target.value);
+                                            setPriority(e.target.value);
+                                        }}
+                                    />
+
+                                <Button
+                                    buttonType="submit"
+                                    variant="submit"
+                                >+ Add new task
+                                </Button>
+
+                            </form>
+                            </aside>
+                    </div>
+
+                    <main className='page-right-wrapper-desktop'>
+
+                        <div className="list-wrapper">
+
+                            <h1>Tasks</h1>
+
+                            {todos.map((todo) => {
+                                return (
+                                    <ListItem
+                                        key={todo.id}
+                                        id={todo.id}
+                                        status={todo.completed}
+                                        title={todo.title}
+                                        variant={todo.className}
+                                        toggleCompleted={toggleOneCompleted}
+                                        deleteTask={deleteTask}
+                                    />
+                                );
+                            })}
+                        </div>
+
+
+                    </main>
                 </div>
-
-
-            </main>
         </div>
         </>
 
