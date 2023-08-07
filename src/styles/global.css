@@ -126,12 +126,13 @@ nav .button {
     padding: 14px 47px;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.9rem;
+    min-width: 466px;
 }
 
     /* -----------   4.2 Create new list item ------------------ */
 
 .form-container {
-    max-width: 500px;
+    max-width: 400px;
     margin: 50px 30px 85px 30px;
     display: flex;
     flex-direction: column;
@@ -297,9 +298,9 @@ nav .button {
 
 @media only screen and (min-width: 620px) {
 
-
     .page-left-wrapper-desktop {
         width: 80%;
+        margin: 10px 0 0 30px
     }
 
     .page-right-wrapper-desktop {
@@ -332,6 +333,7 @@ nav .button {
 
     .page-left-wrapper-desktop{
         padding: 20px;
+     margin: 0;
     }
 
     .page-right-wrapper-desktop {
