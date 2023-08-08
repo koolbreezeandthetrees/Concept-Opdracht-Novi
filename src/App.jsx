@@ -3,10 +3,11 @@ import {useState} from "react";
 
 
 import Button from "./components/button/Button.jsx";
-import ListItem from "./components/list-item/ListItem.jsx";
 import InputElement from "./components/input-item/InputElement.jsx";
 import SelectElement from "./components/input-item/SelectElement.jsx";
 import SearchField from "./components/input-item/Search.jsx";
+
+import ListItem from "./components/list-item/ListItem.jsx";
 
 import getReadableDateTime from "./helpers/currentTimeStamp.js";
 import getPriorityClassName from "./helpers/getPriorityClassname.js";
