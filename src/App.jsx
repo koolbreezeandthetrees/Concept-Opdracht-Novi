@@ -78,7 +78,8 @@ function App() {
         }
     }
 
-    // HALLO dit is de betere versie
+ //Dit is een kopie van de main, hierin ga ik mijn router toevoegen.
+
     return (
         <>
             <div className="outer-container">
