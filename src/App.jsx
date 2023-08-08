@@ -78,7 +78,7 @@ function App() {
         }
     }
 
-
+    // HALLO dit is de betere versie
     return (
         <>
             <div className="outer-container">
