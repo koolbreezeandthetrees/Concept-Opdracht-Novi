@@ -78,6 +78,7 @@ function App() {
         }
     }
 
+    // HALLO DIT IS NIEUW
 
     return (
         <>
