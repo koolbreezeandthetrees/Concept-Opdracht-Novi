@@ -79,7 +79,6 @@ function App() {
     }
 
     // HALLO DIT IS NIEUW
-
     return (
         <>
             <div className="outer-container">
