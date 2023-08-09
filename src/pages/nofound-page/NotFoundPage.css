@@ -1,0 +1,12 @@
+.not-found-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 550px;
+}
+
+.not-found-container p {
+ font-size: 30px;
+    font-family: 'IBM Plex Sans', sans-serif;
+}

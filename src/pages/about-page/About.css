@@ -1,0 +1,42 @@
+.about-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 540px;
+}
+
+.about-container p {
+    font-size: 20px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.4;
+}
+
+
+.about-text {
+    max-width: 763px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    padding-inline: 63px;
+    text-align: justify;
+}
+
+.about-container a {
+    text-decoration: underline;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.09rem;
+
+}
+
+.about-container a:hover {
+    color: sandybrown;
+
+}
+
+@media only screen and (max-width: 620px) {
+    .about-text {
+        padding-inline: 63px;
+        margin-top: 150px;
+    }
+}

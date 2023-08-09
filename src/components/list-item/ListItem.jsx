@@ -1,6 +1,12 @@
 import { ListMagnifyingGlass, X} from "@phosphor-icons/react";
+import {Link, useNavigate} from "react-router-dom";
+import sortByCompletion from "../../helpers/sort-functions/sortByCompletion.js";
 
 export default function ListItem({ id, status, title, variant, toggleCompleted, deleteTask }) {
+    const navigate = useNavigate()
+    function clickHandler() {
+        navigate(`/details/${id}`)
+    }
     return (
         <li key={id} className="list-item">
             <div className="align-at-start">
@@ -19,7 +25,7 @@ export default function ListItem({ id, status, title, variant, toggleCompleted, 
                         {status ? 'completed' : 'pending'}
                     </label>
                 </div>
-                <ListMagnifyingGlass size={38} />
+                <ListMagnifyingGlass size={38} onClick={clickHandler}/>
                 <X size={35} onClick={() => deleteTask(id)} />
             </div>
 

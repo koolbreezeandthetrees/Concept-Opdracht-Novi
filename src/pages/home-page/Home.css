@@ -1,0 +1,420 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;1,400;1,500&family=Quicksand:wght@400;500;600;700&display=swap');
+
+/*////////////////////////
+    Table of Contents
+    1. Global Styles
+    2. Typography
+    3. Layout
+        3.1 Reusables
+        3.2 Other
+    4. Areas
+        4.1 Nav
+        4.2 Create list item
+        4.3 List
+    5. Media Queries
+////////////////////////*/
+
+/* ------------------------------- 1. Global Styles -------------------------------- */
+
+* {
+    background-color: var(--color--background);
+    color: var(--color--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+html {
+    font-size: 16px
+}
+
+.outer-container {
+    width: 100vw;
+}
+
+/* ------------------------------- 2. Typography -----------------------------------*/
+
+
+
+/* ------------------------------- 3. Layout --------------------------------------- */
+
+input, select {
+    padding: 10px;
+    border: 1px solid green;
+    border-radius: 10px;
+}
+
+.global-container {
+    border-radius: 30px;
+    border: 3px solid var(--color--text);
+}
+
+.outer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+}
+.wrapper-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+    column-gap: 10px;
+}
+
+.page-left-wrapper-desktop {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+    margin-left: 14px;
+}
+
+.page-right-wrapper-desktop {
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    width: 100%;
+}
+
+aside {
+    width: 100%;
+}
+
+/* ------------------------------- 4. Areas --------------------------------------- */
+
+/* -----------   4.1 Navigation + searchbar------------------ */
+
+
+.button-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    max-width: 500px;
+    padding: 28px 20px 20px 40px;
+    column-gap: 20px;
+}
+nav h3 {
+    display: inline-block;
+    font-size: 1.5rem;
+    font-family: 'IBM Plex Sans', sans-serif;
+    letter-spacing: 1px;
+}
+nav .button {
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--color--text);
+    padding: 0;
+}
+.search-field {
+    width: 100%;
+    padding: 0px 75px 0px 45px;
+    display: flex;
+    align-items: center;
+}
+.search-field input {
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid var(--color--text);
+    margin-left: 10px;
+    max-width: 300px;
+    padding-left: 56px;
+    font-size: 1rem;
+}
+.search-field input:focus {
+    outline: none;
+
+}
+.search-icon {
+    position: relative;
+    margin-right: -47px;
+    margin-top: -4px;
+}
+.search-result-container {
+    padding: 14px 47px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    min-width: 466px;
+}
+
+/* -----------   4.2 Create new list item ------------------ */
+
+.form-container {
+    max-width: 400px;
+    margin: 50px 30px 85px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 12px;
+    border: 3px solid #b5dc9e;
+    padding: 26px 28px 46px 28px;
+    border-radius: 20px;
+    position: relative;
+}
+.form-container::after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    border: 2px solid transparent;
+    backdrop-filter: blur(1px);
+    z-index: 0;
+}
+.form-container input, select {
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid var(--color--text);
+    margin-left: 0px;
+    width: 90%;
+    padding-left: 20px;
+    font-size: 1.07rem;
+    color: var(--color--text);
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    letter-spacing: 3px;
+    z-index: 5;
+
+}
+
+.form-container input:focus {
+    outline: none; /* Remove the default outline */
+}
+
+.form-container select:focus {
+    outline: none; /* Remove the default outline */
+}
+.form-container input::placeholder {
+    color: var(--color--text);
+}
+.button--submit {
+    position: absolute;
+    margin-left: 192px;
+    margin-top: 175px;
+    padding: 16px 18px;
+    background-color: var(--color--button-background);
+    border-radius: 30px;
+    font-size: 1rem;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    letter-spacing: 3px;
+
+}
+
+/* -----------   4.1 List ---------------------------------- */
+
+.list-wrapper h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    margin: 2px 0 20px 29px;
+    max-width: 100px;
+}
+.list-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding: 45px 44px;
+}
+.list-item {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight:400;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    column-gap: 20px;
+    align-items: center;
+    margin: 10px;
+    max-width: 500px;
+
+}
+.align-at-start {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    column-gap: 33px;
+}
+.align-at-end {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 20px;
+}
+.list-title {
+    font-size: 0.9rem;
+}
+.lowPriorityCircle {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    background-color: var(--color--circle-one);
+    border-radius: 50%;
+    border: 1px solid #C1C35A;
+}
+.mediumPriorityCircle {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    background-color: var(--color--circle-two);
+    border-radius: 50%;
+    border: 1px solid #C1C35A;
+}
+.highPriorityCircle {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    background-color: #FF7121;
+    border-radius: 50%;
+    border: 1px solid #C1C35A;
+}
+
+.checkbox-button {
+    display: inline-block;
+    padding: 7px 4px;
+    border: 1px solid var(--color--text);
+    background-color: white;
+    cursor: pointer;
+    text-align: center;
+    user-select: none;
+    border-radius: 5px;
+    width: 4rem;
+    font-size: 0.5rem;
+}
+.checkbox-button input[type="checkbox"]:checked + label {
+    background-color: var(--color--text);
+    color: white;
+}
+.checkbox-button.completed {
+    background-color: var(--color--text);
+    color: white;
+}
+.checkbox-button.pending {
+    background-color: white;
+    color: black;
+}
+.checkbox-button input[type="checkbox"] {
+    display: none;
+}
+.checkbox-button label {
+    display: block;
+    margin: 0;
+    cursor: pointer;
+}
+
+/* ------------------------------- 5. Media Queries
+--------------------------------------- */
+
+@media only screen and (min-width: 620px) {
+    .outer-container {
+        width: 100vw;
+    }
+
+    .wrapper-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        width: 100%;
+        column-gap: 10px;
+    }
+
+    .page-left-wrapper-desktop {
+        max-width: 700px;
+        align-items: start;
+        margin-left: 14px;
+
+    }
+
+    nav {
+        max-width: 460px;
+    }
+
+    aside {
+        max-width: 460px;
+    }
+
+    .page-right-wrapper-desktop {
+        max-width: 700px;
+    }
+
+    .list-title {
+        font-size: 1.1rem;
+    }
+
+    .checkbox-button {
+        padding: 9px 4px;
+        width: 6rem;
+        font-size: 0.9rem;
+    }
+
+}
+
+@media only screen and (min-width: 1020px) {
+
+    .wrapper-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+        column-gap: 10px;
+    }
+
+    .outer-container {
+        width: 100vw;
+        padding-block: 20px;
+    }
+
+    .page-left-wrapper-desktop{
+        padding: 20px;
+        flex-basis: 500px;
+        margin: 0;
+    }
+
+    .page-right-wrapper-desktop {
+       flex-basis: 500px;
+    }
+
+    .list-wrapper {
+        padding: 45px 0;
+    }
+
+    .list-item {
+        max-width: 500px;
+    }
+    .list-title {
+        font-size: 1.3rem;
+    }
+    /*    .checkbox-button {
+            padding: 9px 4px;
+            width: 6.5rem;
+            font-size: 1rem;
+        }*/
+
+    .search-field {
+        max-width: 300px;
+        padding: 0px 0 0px 45px;
+        display: flex;
+        align-items: center;
+    }
+    .form-container {
+        width: 397px;
+    }
+
+    .align-at-start {
+        column-gap: 35px;
+    }
+    .align-at-end {
+        column-gap: 25px;
+    }
+
+}
