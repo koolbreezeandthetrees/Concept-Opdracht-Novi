@@ -111,7 +111,7 @@ export default function Details() {
                             <section className="details-form-section description">
                                 <label>
                                     description:
-                                    <span className='display-description'>als je tijd hebt ook onkruid wieden</span>
+                                    <span className='display-description'>"als je tijd hebt ook onkruid wieden"</span>
                                 </label>
                             </section>
                         </div>

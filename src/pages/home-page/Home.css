@@ -59,7 +59,6 @@ input, select {
     justify-content: center;
     align-items: start;
     width: 100%;
-    column-gap: 10px;
 }
 
 .page-left-wrapper-desktop {
@@ -68,7 +67,7 @@ input, select {
     justify-content: center;
     align-items: start;
     width: 100%;
-    margin-left: 14px;
+    padding-left: 14px;
 }
 
 .page-right-wrapper-desktop {
@@ -157,6 +156,7 @@ nav .button {
     border-radius: 20px;
     position: relative;
 }
+
 .form-container::after {
     content: '';
     position: absolute;
@@ -181,7 +181,6 @@ nav .button {
     font-weight: 600;
     letter-spacing: 3px;
     z-index: 5;
-
 }
 
 .form-container input:focus {
@@ -196,8 +195,8 @@ nav .button {
 }
 .button--submit {
     position: absolute;
-    margin-left: 192px;
-    margin-top: 175px;
+    bottom: -76px;
+    right: 24px;
     padding: 16px 18px;
     background-color: var(--color--button-background);
     border-radius: 30px;
@@ -205,7 +204,6 @@ nav .button {
     font-family: 'Quicksand', sans-serif;
     font-weight: 600;
     letter-spacing: 3px;
-
 }
 
 /* -----------   4.1 List ---------------------------------- */
@@ -233,7 +231,7 @@ nav .button {
     column-gap: 20px;
     align-items: center;
     margin: 10px;
-    max-width: 500px;
+    max-width: 380px;
 
 }
 .align-at-start {
@@ -314,41 +312,42 @@ nav .button {
 /* ------------------------------- 5. Media Queries
 --------------------------------------- */
 
-@media only screen and (min-width: 620px) {
+@media only screen and (min-width: 600px) {
     .outer-container {
         width: 100vw;
     }
-
     .wrapper-wrapper {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: start;
         width: 100%;
-        column-gap: 10px;
     }
-
     .page-left-wrapper-desktop {
-        max-width: 700px;
-        align-items: start;
-        margin-left: 14px;
-
+        max-width: 680px;
+        padding-top: 10px;
     }
 
     nav {
         max-width: 460px;
     }
-
     aside {
-        max-width: 460px;
+        max-width: 660px;
     }
-
+    .form-container {
+        max-width: 540px;
+        margin: 50px 40px 85px 33px;
+        padding: 26px 30px 46px 30px;
+    }
     .page-right-wrapper-desktop {
-        max-width: 700px;
+        max-width: 680px;
     }
 
+    .list-item {
+        max-width: 520px;
+    }
     .list-title {
-        font-size: 1.1rem;
+        font-size: 1.3rem;
     }
 
     .checkbox-button {
@@ -365,8 +364,8 @@ nav .button {
         display: flex;
         flex-direction: row;
         justify-content: center;
+        align-items: start;
         width: 100%;
-        column-gap: 10px;
     }
 
     .outer-container {
@@ -382,6 +381,7 @@ nav .button {
 
     .page-right-wrapper-desktop {
        flex-basis: 500px;
+        padding-right: 10px;
     }
 
     .list-wrapper {
