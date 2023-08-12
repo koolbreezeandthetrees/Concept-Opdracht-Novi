@@ -1,6 +1,5 @@
 import { ListMagnifyingGlass, X} from "@phosphor-icons/react";
-import {Link, useNavigate} from "react-router-dom";
-import sortByCompletion from "../../helpers/sort-functions/sortByCompletion.js";
+import { useNavigate} from "react-router-dom";
 
 export default function ListItem({ id, status, title, variant, toggleCompleted, deleteTask }) {
     const navigate = useNavigate()

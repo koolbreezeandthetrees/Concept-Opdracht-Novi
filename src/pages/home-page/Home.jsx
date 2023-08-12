@@ -1,6 +1,7 @@
 import {v4 as uuid} from 'uuid';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import './Home.css'
+import axios from "axios";
 
 
 import Button from "../../components/button/Button.jsx";
@@ -17,60 +18,28 @@ import getPriorityClassName from "../../helpers/getPriorityClassname.js";
 import toggleSort from "../../helpers/sort-functions/sortByPriority.js"
 import sortOnTimestamp from "../../helpers/sort-functions/sortByDate.js";
 import sortByCompletion from "../../helpers/sort-functions/sortByCompletion.js";
-/*import handleSearch from "./helpers/search.js";*/
-
-
+import {Backspace} from "@phosphor-icons/react";
 
 function Home() {
 
     const [todos, setTodos] = useState([]);
     const [inputField, setInputfield] = useState("")
-    const [priority, setPriority] = useState(null)
+    const [priority, setPriority] = useState(NaN)
     const [completion, setCompletion] = useState(false)
+    const [description, setDescription] = useState("")
     const [sorted, setSorted] = useState(false)
-    /*    const [description, setDescription] = useState('')*/
+    const [tag, setTags] = useState("")
     const [searchInput, setSearchInput] = useState("");
     const [foundTodo, setFoundTodo] = useState(null);
-    const [selectedPriority, setSelectedPriority] = useState('');
+    const [selectedPriority, setSelectedPriority] = useState(null);
 
-    function addTodo(e) {
-        e.preventDefault();
-        setTodos([
-            ...todos,
-            {
-                id: uuid(),
-                date: getReadableDateTime(),
-                title: inputField,
-                completed: completion,
-                priority: priority,
-                /*    description: description,*/
-                className: getPriorityClassName(parseInt(priority)),
-            }
-        ])
-        setSelectedPriority('');
-        setInputfield('');
-        setPriority(null);
-    }
-    function deleteTask(idParam) {
-        const updatedTodos = todos.filter(todo => todo.id !== idParam);
-        setTodos(updatedTodos);
-    }
-    function toggleOneCompleted(idParam) {
-        const updatedTodos = todos.map((todo) => {
-            if (todo.id === idParam) {
-                return {
-                    ...todo,
-                    completed: !todo.completed
-                };
-            }
-            return todo;
-        });
 
-        setTodos(updatedTodos);
-    }
+
 
     function handleSearch() {
-        const found = todos.find((todo) => todo.title.includes(searchInput));
+        const found = todos.find((todo) =>
+            todo.title.toLowerCase().includes(searchInput.toLowerCase())
+        );
         setFoundTodo(found);
     }
 
@@ -80,12 +49,82 @@ function Home() {
         }
     }
 
-    //Dit is een kopie van de main, hierin ga ik mijn router toevoegen.
+    function clearSearchResult() {
+        setFoundTodo(null);
+        setSearchInput("");
+    }
 
-    return (
-        <>
-            <div className="outer-container">
-                <div className='wrapper-wrapper'>
+    useEffect(() => {
+        async function fetchAllTodos() {
+            try {
+                const response = await axios.get('http://localhost:3000/todos');
+                setTodos(response.data);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        fetchAllTodos();
+    }, []);
+    async function addNewTodo(e) {
+        e.preventDefault();
+        try {
+            const response = await axios.post('http://localhost:3000/todos', {
+                id: uuid(),
+                date: getReadableDateTime(),
+                title: inputField,
+                completed: completion,
+                priority: priority,
+                description: description,
+                tags: tag,
+                className: getPriorityClassName(parseInt(priority)),
+            });
+
+            console.log(response.data);
+            const newTodo = response.data;
+            setTodos([
+                ...todos,
+                newTodo
+            ]);
+
+            setSelectedPriority('');
+            setInputfield('');
+            setPriority(null);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    async function deleteTodo(id) {
+        try {
+            await
+                axios.delete(`http://localhost:3000/todos/${id}`);
+            setTodos(todos.filter(todo => todo.id !== id))
+        } catch (e){
+            console.error(e);
+        }
+    }
+
+    async function toggleOneCompleted(idParam) {
+        const updatedTodos = todos.map((todo) =>
+            todo.id === idParam ? { ...todo, completed: !todo.completed } : todo
+        );
+
+        setTodos(updatedTodos);
+
+        const updatedTodo = updatedTodos.find(todo => todo.id === idParam);
+
+        try {
+            await axios.put(`http://localhost:3000/todos/${idParam}`, updatedTodo);
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+
+return (
+    <>
+        <div className="outer-container">
+            <div className='wrapper-wrapper'>
                 <section className='page-left-wrapper-desktop'>
                     <nav className='left-one'>
                         <div className="button-wrapper">
@@ -93,7 +132,7 @@ function Home() {
                             <Button
                                 buttonType="button"
                                 variant="sort-by-priority"
-                                handleClick= {() => toggleSort(sorted, todos, setTodos, setSorted)}
+                                handleClick={() => toggleSort(sorted, todos, setTodos, setSorted)}
                             >priority</Button>
 
 
@@ -121,12 +160,15 @@ function Home() {
 
                         {foundTodo && (
                             <div className="search-result-container">
-                                search result: {foundTodo.title} this task is {foundTodo ? "pending" : "complete"}
+                                search result: {foundTodo.title}. this task is {foundTodo ? "pending" : "complete"}
+                                <Backspace size={15} className='remove-search-result-icon'
+                                           onClick={() => clearSearchResult()}/>
                             </div>
                         )}
+
                     </nav>
                     <aside className='left-two'>
-                        <form className="form-container" onSubmit={addTodo}>
+                        <form className="form-container" onSubmit={addNewTodo}>
 
                             <InputElement
                                 type="text"
@@ -137,18 +179,19 @@ function Home() {
 
                             <SelectElement
                                 name="priority"
-                                value={priority || selectedPriority}
+                                value={selectedPriority !== null ? selectedPriority.toString() : (priority !== null ? priority.toString() : '')}
                                 placeholder="priority"
                                 options={[
-                                    { value: 3, label: 'low' },
-                                    { value: 2, label: 'medium' },
-                                    { value: 1, label: 'high' }
+                                    {value: 3, label: 'low'},
+                                    {value: 2, label: 'medium'},
+                                    {value: 1, label: 'high'}
                                 ]}
                                 onChange={(e) => {
-                                    setSelectedPriority(e.target.value);
-                                    setPriority(e.target.value);
+                                    setSelectedPriority(parseInt(e.target.value)); // Parse the value to an integer
+                                    setPriority(parseInt(e.target.value)); // Parse the value to an integer
                                 }}
                             />
+
 
                             <Button
                                 buttonType="submit"
@@ -171,18 +214,49 @@ function Home() {
                                     title={todo.title}
                                     variant={todo.className}
                                     toggleCompleted={toggleOneCompleted}
-                                    deleteTask={deleteTask}
+                                    deleteTask={deleteTodo}
                                 />
                             );
                         })}
                     </div>
                 </main>
-                </div>
             </div>
-        </>
+        </div>
+    </>
 
-    );
+);
 }
 
 export default Home;
 
+/*    function addTodo(e) {
+        e.preventDefault();
+        setTodos([
+            ...todos,
+            {
+                id: uuid(),
+                date: getReadableDateTime(),
+                title: inputField,
+                completed: completion,
+                priority: priority,
+                description: description,
+                tags: tag,
+                className: getPriorityClassName(parseInt(priority)),
+            }
+        ])
+        setSelectedPriority('');
+        setInputfield('');
+        setPriority(null);
+    }*/
+/*    function deleteTask(idParam) {
+        const updatedTodos = todos.filter(todo => todo.id !== idParam);
+        setTodos(updatedTodos);
+    }*/
+/*
+    function toggleOneCompleted(idParam) {
+        const updatedTodos = todos.map((todo) =>
+            todo.id === idParam ? {...todo, completed: !todo.completed} : todo
+        );
+
+        setTodos(updatedTodos);
+    }*/

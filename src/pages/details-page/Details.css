@@ -132,6 +132,8 @@ h2 {
     border-radius: 50%;
     border: 1px solid #C1C35A;
     display: inline-block;
+    margin-bottom: -9px;
+    margin-left: 19px;
 }
 .mediumPriorityCircle {
     flex-shrink: 0;
@@ -141,8 +143,10 @@ h2 {
     border-radius: 50%;
     border: 1px solid #C1C35A;
     display: inline-block;
+    margin-bottom: -9px;
+    margin-left: 19px;
 }
-.highPriorityCircleDetails {
+.highPriorityCircle {
     flex-shrink: 0;
     width: 30px;
     height: 30px;
@@ -163,6 +167,7 @@ h2 {
     padding: 8px 15px;
     margin-left: 55px;
     max-width: 124px;
+    height: 30px;
 }
 .tags p::before {
      content: '';
@@ -188,53 +193,53 @@ h2 {
     h2 {
     margin-top: -110px;
     font-size: 1.6rem;
-}
+    }
 
-.details{
+    .details {
     flex-basis: 700px;
     margin: 123px 10px 0px 10px;
     padding: 60px 31px 76px 31px;
     position: relative;
     z-index: 4;
-}
+    }
 
-.details-form-section {
-    height: 40px;
-}
+    .details-form-section {
+        height: 40px;
+    }
 
-.details-form-section label {
-    font-size: 1.1rem;
-    font-family: 'IBM Plex Mono', sans-serif;
-}
-.details select {
-    padding: 4px 4px 4px 15px;
-    max-width: 149px;
-    margin-left: 28px;
-    font-size: 0.8rem;
-}
-.details input {
-    padding: 4px;
-    max-width: 140px;
-    margin-left: 23px;
-    border-radius: 0;
-    border: none;
-    border-bottom: 2px solid var(--color--text);
-    font-size: 1rem;
-}
-.details textarea {
-    padding: 4px;
-    max-width: 200px ;
-    margin-left: 0px;
-    margin-top: 10px;
-    display: block;
-}
-.details p {
-    margin-left: 14px;
-    margin-block: 10px;
-    font-size: 1.1rem;
-    font-family: 'IBM Plex Sans', sans-serif;
-    display: inline-block;
-}
+    .details-form-section label {
+        font-size: 1.1rem;
+        font-family: 'IBM Plex Mono', sans-serif;
+    }
+    .details select {
+        padding: 4px 4px 4px 15px;
+        max-width: 149px;
+        margin-left: 28px;
+        font-size: 0.8rem;
+    }
+    .details input {
+        padding: 4px;
+        max-width: 140px;
+        margin-left: 23px;
+        border-radius: 0;
+        border: none;
+        border-bottom: 2px solid var(--color--text);
+        font-size: 1rem;
+    }
+    .details textarea {
+        padding: 4px;
+        max-width: 200px ;
+        margin-left: 0px;
+        margin-top: 10px;
+        display: block;
+    }
+    .details p {
+        margin-left: 14px;
+        margin-block: 10px;
+        font-size: 1.1rem;
+        font-family: 'IBM Plex Sans', sans-serif;
+        display: inline-block;
+    }
 
     .lowPriorityCircle-details {
         display: inline-block;

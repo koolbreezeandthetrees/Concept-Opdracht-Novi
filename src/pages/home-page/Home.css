@@ -67,11 +67,12 @@ input, select {
     justify-content: center;
     align-items: start;
     width: 100%;
-    padding-left: 14px;
+    padding-inline: 14px;
 }
 
 .page-right-wrapper-desktop {
     width: 100%;
+    padding-inline: 14px;
 }
 
 nav {
@@ -113,7 +114,7 @@ nav .button {
 }
 .search-field {
     width: 100%;
-    padding: 0px 75px 0px 45px;
+    padding: 0 75px 0 45px;
     display: flex;
     align-items: center;
 }
@@ -140,6 +141,11 @@ nav .button {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.9rem;
     min-width: 466px;
+}
+
+.remove-search-result-icon {
+    margin-bottom: -4px;
+    margin-left: 8px;
 }
 
 /* -----------   4.2 Create new list item ------------------ */
@@ -172,7 +178,7 @@ nav .button {
     border: none;
     border-radius: 0;
     border-bottom: 2px solid var(--color--text);
-    margin-left: 0px;
+    margin-left: 0;
     width: 90%;
     padding-left: 20px;
     font-size: 1.07rem;
@@ -220,7 +226,7 @@ nav .button {
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    padding: 45px 44px;
+    padding: 45px 25px;
 }
 .list-item {
     font-family: 'IBM Plex Mono', monospace;
@@ -232,6 +238,7 @@ nav .button {
     align-items: center;
     margin: 10px;
     max-width: 380px;
+    flex-shrink: 1;
 
 }
 .align-at-start {
@@ -394,15 +401,10 @@ nav .button {
     .list-title {
         font-size: 1.3rem;
     }
-    /*    .checkbox-button {
-            padding: 9px 4px;
-            width: 6.5rem;
-            font-size: 1rem;
-        }*/
 
     .search-field {
         max-width: 300px;
-        padding: 0px 0 0px 45px;
+        padding: 0 0 0 45px;
         display: flex;
         align-items: center;
     }
