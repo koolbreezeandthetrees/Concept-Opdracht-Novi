@@ -1,9 +1,15 @@
+/* -------------------------    Details Page  ---------------------------- */
+
+/* Containers */
+
 .page-container-details {
     display: flex;
     flex-direction: row;
     width: 100vw;
     padding: 60px;
 }
+
+/* Typography */
 
 h2 {
     position: absolute;
@@ -14,6 +20,8 @@ h2 {
     text-transform: capitalize;
 }
 
+/* Main Details Container */
+
 .details {
     flex-basis: 700px;
     margin: 140px auto 10px auto;
@@ -21,7 +29,6 @@ h2 {
     position: relative;
     z-index: 4;
 }
-
 .details::after {
     content: '';
     position: absolute;
@@ -34,15 +41,18 @@ h2 {
     z-index: -1;
 }
 
+/* Form Section */
+
 .details-form-section {
     height: 50px;
 }
-
 .details-form-section label {
     font-size: 1.5rem;
     font-family: 'IBM Plex Mono', sans-serif;
     margin-bottom: 30px;
 }
+
+/* Input Styling */
 
 .details select,
 .details input,
@@ -51,22 +61,23 @@ h2 {
     max-width: 200px;
     margin-left: 30px;
 }
-
 .details input {
     border-radius: 0;
     border: none;
     border-bottom: 2px solid var(--color--text);
     font-size: 1.1rem;
 }
-
 .details input:focus,
 .details select:focus {
     outline: none;
 }
-
 .details textarea {
     margin-bottom: -25px;
 }
+
+
+/* Paragraphs and Text */
+
 
 .details p {
     margin-left: 20px;
@@ -75,22 +86,81 @@ h2 {
     display: inline-block;
 }
 
+/* Status  */
+
 .status-display p {
     border: 2px solid var(--color--text);
     border-radius: 5px;
     padding: 6px 10px;
     max-width: 124px;
 }
-
 .display-status-complete {
     background-color: var(--color--text);
     color: white;
 }
-
 .display-status-pending {
     background-color: transparent;
     color: var(--color--text);
 }
+
+
+/* Priority Circles */
+
+.lowPriorityCircle,
+.mediumPriorityCircle,
+.highPriorityCircle {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid var(--color--circle-border);
+    display: inline-block;
+    margin-bottom: -10px;
+    margin-left: 15px;
+}
+.lowPriorityCircle {
+    background-color: var(--color--circle-one);
+}
+.mediumPriorityCircle {
+    background-color: var(--color--circle-two);
+}
+.highPriorityCircle {
+    background-color: var(--color--circle-three);
+}
+
+/* Tags */
+
+.tags p {
+    max-height: 41px;
+    max-width: 200px;
+    clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 15% 100%, 0% 50%);
+    background-color: var(--color--tags);
+    color: var(--color-tags-text);
+    padding: 10px 25px 10px 44px;
+}
+/* Description */
+
+.description {
+    max-height: 80px;
+    padding-top: 6px;
+}
+.description span{
+    font-size: 15px;
+    width: 100%;
+}
+.display-description {
+    margin-top: 14px;
+    display: block;
+    border: 1px solid var(--color--text);
+    padding: 10px;
+    margin-bottom: 50px;
+
+}
+
+/* Date */
+
+
+/* Icons */
 
 .details .edit-icon,
 .details .submit-icon {
@@ -98,15 +168,12 @@ h2 {
     position: absolute;
     right: 30px;
 }
-
 .details .edit-icon {
     top: 30px;
 }
-
 .details .submit-icon {
     bottom: 30px;
 }
-
 .go-back-to-homepage-arrow {
     display: flex;
     flex-direction: row;
@@ -121,7 +188,6 @@ h2 {
     font-size: 25px;
     letter-spacing: 3.5px;
 }
-
 .go-back-to-homepage-arrow .arrow-icon {
     border: none;
     margin-top: 8px;
@@ -130,69 +196,23 @@ h2 {
     letter-spacing: 3.5px;
 }
 
-.lowPriorityCircle,
-.mediumPriorityCircle,
-.highPriorityCircle {
-    flex-shrink: 0;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: 1px solid var(--color--circle-border);
-    display: inline-block;
-    margin-bottom: -10px;
-    margin-left: 15px;
-}
 
-.lowPriorityCircle {
-    background-color: var(--color--circle-one);
-}
 
-.mediumPriorityCircle {
-    background-color: var(--color--circle-two);
-}
-
-.highPriorityCircle {
-    background-color: var(--color--circle-three);
-}
-
-.tags p {
-    max-height: 41px;
-    max-width: 200px;
-    clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 15% 100%, 0% 50%);
-    background-color: var(--color--tags);
-    color: var(--color-tags-text);
-    padding: 10px 25px 10px 44px;
-}
-
-.description {
-    max-height: 80px;
-    padding-top: 6px;
-}
-
-.description span{
-    font-size: 15px;
-    width: 100%;
-}
-
-.display-description {
-    margin-top: 14px;
-    display: block;
-    border: 1px solid var(--color--text);
-    padding: 10px;
-    margin-bottom: 50px;
-
-}
-
+/* ------------------------------- 4.2 Media Queries ------------------------------- */
 @media only screen and (max-width: 600px) {
+
+    /* Containers */
     .page-container-details {
         padding: 50px;
     }
 
+    /* Typography */
     h2 {
         margin-top: -110px;
         font-size: 1.6rem;
     }
 
+    /* Main Details Container */
     .details {
         flex-basis: 700px;
         margin: 123px 10px 0 10px;
@@ -201,22 +221,22 @@ h2 {
         z-index: 4;
     }
 
+    /* Form Section */
     .details-form-section {
         height: 40px;
     }
-
     .details-form-section label {
         font-size: 1.1rem;
         font-family: 'IBM Plex Mono', sans-serif;
     }
 
+    /* Input Styling */
     .details select {
         padding: 4px 4px 4px 15px;
         max-width: 149px;
         margin-left: 28px;
         font-size: 0.8rem;
     }
-
     .details input {
         padding: 4px;
         max-width: 140px;
@@ -226,7 +246,6 @@ h2 {
         border-bottom: 2px solid var(--color--text);
         font-size: 1rem;
     }
-
     .details textarea {
         padding: 4px;
         max-width: 200px;
@@ -235,6 +254,7 @@ h2 {
         display: block;
     }
 
+    /* Paragraphs and Text */
     .details p {
         margin-left: 14px;
         font-size: 1.1rem;
@@ -242,6 +262,7 @@ h2 {
         display: inline-block;
     }
 
+    /* Priority Circles */
     .lowPriorityCircle,
     .mediumPriorityCircle-details {
         display: inline-block;
@@ -249,33 +270,35 @@ h2 {
     .highPriorityCircle {
         margin-bottom: -5px;
     }
+    /* Go Back Arrow */
 
-    .go-back-to-homepage-arrow .arrow-icon {
-        font-size: 22px;
-    }
-
+    /* Tags */
     .tags p {
         margin-left: 14px;
         max-width: 350px;
     }
 
+    /* Icons */
     .details .edit-icon,
     .details .submit-icon {
         right: 20px;
     }
-
     .details .edit-icon {
         top: 20px;
     }
     .details .submit-icon {
         bottom: 20px;
     }
+    .go-back-to-homepage-arrow .arrow-icon {
+        font-size: 22px;
+    }
 
+    /* Status Display */
     .status-display {
         margin-bottom: 4px;
     }
 
-
+    /* Description */
     .display-description {
         font-size: 1rem;
     }

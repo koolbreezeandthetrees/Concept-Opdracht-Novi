@@ -113,7 +113,6 @@ export default function Details() {
             [name]: value,
         }));
 
-        // Update priority separately if the select element changes
         if (name === 'priority') {
             setInputValues((prevValues) => ({
                 ...prevValues,
