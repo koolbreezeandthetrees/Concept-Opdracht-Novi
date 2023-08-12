@@ -24,7 +24,7 @@ function Home() {
 
     const [todos, setTodos] = useState([]);
     const [inputField, setInputfield] = useState("")
-    const [priority, setPriority] = useState(NaN)
+    const [priority, setPriority] = useState(null)
     const [completion, setCompletion] = useState(false)
     const [description, setDescription] = useState("")
     const [sorted, setSorted] = useState(false)
@@ -32,6 +32,7 @@ function Home() {
     const [searchInput, setSearchInput] = useState("");
     const [foundTodo, setFoundTodo] = useState(null);
     const [selectedPriority, setSelectedPriority] = useState(null);
+    const [errorMessage, setErrorMessage] = useState("");
 
 
 
@@ -41,19 +42,22 @@ function Home() {
             todo.title.toLowerCase().includes(searchInput.toLowerCase())
         );
         setFoundTodo(found);
+
+        if (searchInput === "") {
+            clearSearchResult();
+        }
     }
+
 
     function handleKeyPress(event) {
         if (event.key === "Enter") {
             handleSearch();
         }
     }
-
     function clearSearchResult() {
         setFoundTodo(null);
         setSearchInput("");
     }
-
     useEffect(() => {
         async function fetchAllTodos() {
             try {
@@ -67,6 +71,13 @@ function Home() {
     }, []);
     async function addNewTodo(e) {
         e.preventDefault();
+
+        if (!inputField || isNaN(priority) || priority === null) {
+            setErrorMessage("Title and priority are mandatory");
+            return; // Exit early if validation fails
+        }
+        setErrorMessage(""); // Clear error message if validation passes
+
         try {
             const response = await axios.post('http://localhost:3000/todos', {
                 id: uuid(),
@@ -93,7 +104,6 @@ function Home() {
             console.error(error);
         }
     }
-
     async function deleteTodo(id) {
         try {
             await
@@ -103,7 +113,6 @@ function Home() {
             console.error(e);
         }
     }
-
     async function toggleOneCompleted(idParam) {
         const updatedTodos = todos.map((todo) =>
             todo.id === idParam ? { ...todo, completed: !todo.completed } : todo
@@ -192,6 +201,8 @@ return (
                                 }}
                             />
 
+                            {errorMessage && <p className="error-message">{errorMessage}</p>}
+
 
                             <Button
                                 buttonType="submit"
@@ -229,34 +240,3 @@ return (
 
 export default Home;
 
-/*    function addTodo(e) {
-        e.preventDefault();
-        setTodos([
-            ...todos,
-            {
-                id: uuid(),
-                date: getReadableDateTime(),
-                title: inputField,
-                completed: completion,
-                priority: priority,
-                description: description,
-                tags: tag,
-                className: getPriorityClassName(parseInt(priority)),
-            }
-        ])
-        setSelectedPriority('');
-        setInputfield('');
-        setPriority(null);
-    }*/
-/*    function deleteTask(idParam) {
-        const updatedTodos = todos.filter(todo => todo.id !== idParam);
-        setTodos(updatedTodos);
-    }*/
-/*
-    function toggleOneCompleted(idParam) {
-        const updatedTodos = todos.map((todo) =>
-            todo.id === idParam ? {...todo, completed: !todo.completed} : todo
-        );
-
-        setTodos(updatedTodos);
-    }*/

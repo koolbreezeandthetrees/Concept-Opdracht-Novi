@@ -5,6 +5,14 @@
     --color--circle-one: #DFF2C6;
     --color--circle-two: #C1C35A;
     --color--circle-three: #FF7121;
+    --color--circle-border: #C1C35A;
 
-    --color--button-background: #E2EED9;
+    --color--button-background: #ebf3e6;
+
+    --color--tags: #d1ae8b;
+    --color-tags-text : #786868;
+
+    --color-container-border:#b5dc9e;
+
+    --color-error-message: #ff0000;
 }

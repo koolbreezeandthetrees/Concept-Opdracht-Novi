@@ -122,17 +122,11 @@ export default function Details() {
         }
     };
 
-
-
-
-
-
-
         return (
         <>
             <div className='go-back-to-homepage-arrow' onClick={handleBackButton}>
                 <button className="arrow-icon" >
-                    <ArrowLeft size={60} />
+                    <ArrowLeft size={55} />
                 </button>
                 <p>back to tasklist</p>
             </div>
@@ -176,7 +170,7 @@ export default function Details() {
                                     priority:
                                     <SelectElement
                                         name="priority"
-                                        value={todo.priority}
+                                        value={inputValues.priority} // Change this line
                                         placeholder="priority"
                                         options={[
                                             { value: 3, label: 'low' },

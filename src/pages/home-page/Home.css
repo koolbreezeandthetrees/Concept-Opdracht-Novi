@@ -72,7 +72,7 @@ input, select {
 
 .page-right-wrapper-desktop {
     width: 100%;
-    padding-inline: 14px;
+    padding-inline: 12px;
 }
 
 nav {
@@ -137,7 +137,7 @@ nav .button {
     margin-top: -4px;
 }
 .search-result-container {
-    padding: 14px 47px;
+    padding: 20px 40px;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.9rem;
     min-width: 466px;
@@ -157,7 +157,7 @@ nav .button {
     flex-direction: column;
     align-items: center;
     row-gap: 12px;
-    border: 3px solid #b5dc9e;
+    border: 3px solid var(--color-container-border);
     padding: 26px 28px 46px 28px;
     border-radius: 20px;
     position: relative;
@@ -194,7 +194,7 @@ nav .button {
 }
 
 .form-container select:focus {
-    outline: none; /* Remove the default outline */
+    outline: none;
 }
 .form-container input::placeholder {
     color: var(--color--text);
@@ -212,13 +212,25 @@ nav .button {
     letter-spacing: 3px;
 }
 
+.error-message {
+    color: var(--color-error-message);
+    font-size: 0.8rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-top: 9px;
+    margin-left: 4px;
+    z-index: 10;
+    margin-bottom: -20px;
+}
+
 /* -----------   4.1 List ---------------------------------- */
 
 .list-wrapper h1 {
     font-family: 'Quicksand', sans-serif;
     font-weight: bold;
     font-size: 2rem;
-    margin: 2px 0 20px 29px;
+    margin: 2px 0 20px 41px;
     max-width: 100px;
 }
 .list-wrapper {
@@ -246,7 +258,7 @@ nav .button {
     flex-direction: row;
     justify-content: start;
     align-items: center;
-    column-gap: 33px;
+    column-gap: 18px;
 }
 .align-at-end {
     display: flex;
@@ -264,7 +276,7 @@ nav .button {
     height: 30px;
     background-color: var(--color--circle-one);
     border-radius: 50%;
-    border: 1px solid #C1C35A;
+    border: 1px solid var(--color--circle-border);
 }
 .mediumPriorityCircle {
     flex-shrink: 0;
@@ -272,15 +284,15 @@ nav .button {
     height: 30px;
     background-color: var(--color--circle-two);
     border-radius: 50%;
-    border: 1px solid #C1C35A;
+    border: 1px solid var(--color--circle-border);
 }
 .highPriorityCircle {
     flex-shrink: 0;
     width: 30px;
     height: 30px;
-    background-color: #FF7121;
+    background-color: var(--color--circle-two);
     border-radius: 50%;
-    border: 1px solid #C1C35A;
+    border: 1px solid var(--color--circle-border);
 }
 
 .checkbox-button {
@@ -381,7 +393,7 @@ nav .button {
     }
 
     .page-left-wrapper-desktop{
-        padding: 20px;
+        padding: 20px 0 0 20px;
         flex-basis: 500px;
         margin: 0;
     }
