@@ -12,11 +12,11 @@ import SearchField from "../../components/input-item/Search.jsx";
 
 import ListItem from "../../components/list-item/ListItem.jsx";
 
-import getReadableDateTime from "../../helpers/currentTimeStamp.js";
+import getReadableDateTime from "../../helpers/sort-functions/sort-date/currentTimeStamp.js";
 import getPriorityClassName from "../../helpers/getPriorityClassname.js";
 
 import toggleSort from "../../helpers/sort-functions/sortByPriority.js"
-import sortOnTimestamp from "../../helpers/sort-functions/sortByDate.js";
+import sortOnTimestamp from "../../helpers/sort-functions/sort-date/sortByDate.js";
 import sortByCompletion from "../../helpers/sort-functions/sortByCompletion.js";
 import {Backspace} from "@phosphor-icons/react";
 
@@ -36,28 +36,6 @@ function Home() {
 
 
 
-
-    function handleSearch() {
-        const found = todos.find((todo) =>
-            todo.title.toLowerCase().includes(searchInput.toLowerCase())
-        );
-        setFoundTodo(found);
-
-        if (searchInput === "") {
-            clearSearchResult();
-        }
-    }
-
-
-    function handleKeyPress(event) {
-        if (event.key === "Enter") {
-            handleSearch();
-        }
-    }
-    function clearSearchResult() {
-        setFoundTodo(null);
-        setSearchInput("");
-    }
     useEffect(() => {
         async function fetchAllTodos() {
             try {
@@ -74,9 +52,9 @@ function Home() {
 
         if (!inputField || isNaN(priority) || priority === null) {
             setErrorMessage("Title and priority are mandatory");
-            return; // Exit early if validation fails
+            return;
         }
-        setErrorMessage(""); // Clear error message if validation passes
+        setErrorMessage("");
 
         try {
             const response = await axios.post('http://localhost:3000/todos', {
@@ -90,7 +68,6 @@ function Home() {
                 className: getPriorityClassName(parseInt(priority)),
             });
 
-            console.log(response.data);
             const newTodo = response.data;
             setTodos([
                 ...todos,
@@ -127,6 +104,27 @@ function Home() {
         } catch (e) {
             console.error(e);
         }
+    }
+
+
+    function handleSearch() {
+        const found = todos.find((todo) =>
+            todo.title.toLowerCase().includes(searchInput.toLowerCase())
+        );
+        setFoundTodo(found);
+
+        if (searchInput === "") {
+            clearSearchResult();
+        }
+    }
+    function handleKeyPress(event) {
+        if (event.key === "Enter") {
+            handleSearch();
+        }
+    }
+    function clearSearchResult() {
+        setFoundTodo(null);
+        setSearchInput("");
     }
 
 
@@ -196,8 +194,8 @@ return (
                                     {value: 1, label: 'high'}
                                 ]}
                                 onChange={(e) => {
-                                    setSelectedPriority(parseInt(e.target.value)); // Parse the value to an integer
-                                    setPriority(parseInt(e.target.value)); // Parse the value to an integer
+                                    setSelectedPriority(parseInt(e.target.value));
+                                    setPriority(parseInt(e.target.value));
                                 }}
                             />
 

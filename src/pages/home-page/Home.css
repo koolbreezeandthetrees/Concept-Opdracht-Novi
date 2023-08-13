@@ -299,14 +299,14 @@ nav .button {
 .checkbox-button {
     display: inline-block;
     padding: 7px 4px;
-    border: 1px solid var(--color--text);
+    border: 2px solid var(--color--text);
     background-color: white;
     cursor: pointer;
     text-align: center;
     user-select: none;
     border-radius: 5px;
-    width: 4rem;
-    font-size: 0.5rem;
+    width: 4.7rem;
+    font-size: 0.7rem;
 }
 .checkbox-button input[type="checkbox"]:checked + label {
     background-color: var(--color--text);

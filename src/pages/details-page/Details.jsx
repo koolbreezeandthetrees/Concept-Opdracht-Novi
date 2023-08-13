@@ -16,7 +16,6 @@ export default function Details() {
     const [detailEdit, toggleDetailEdit] = useState(false);
 
     const [todo, setTodo] = useState({});
-
     const [inputValues, setInputValues] = useState({
         title: "",
         completed: null,
@@ -27,7 +26,6 @@ export default function Details() {
         className: "",
         deadline: ""
     });
-
 
 
     useEffect(() => {
@@ -50,13 +48,11 @@ export default function Details() {
                     className: getPriorityClassName(response.data.priority),
                     deadline: deadlineDate
                 });
-                console.log(response.data.completed)
             } catch (e) {
                 console.error(e);
             }
         }
         fetchTodo();
-        console.log(todo)
     }, [id]);
 
     const saveInput = async (e) => {
@@ -74,28 +70,20 @@ export default function Details() {
                 className: getPriorityClassName(inputValues.priority)
             };
 
-            // Send the PUT request
             const response = await axios.put(`http://localhost:3000/todos/${id}`, editedTask);
 
-            // Update the todo state using the response data
             setTodo(response.data);
-
-            console.log(response.data);
 
         } catch (error) {
             console.error(error);
         }
     };
 
+/*
     useEffect(() => {
         console.log(todo);
     }, [todo]);
-
-
-
-
-
-
+*/
 
     const handleToggleEdit = () => {
         toggleDetailEdit(!detailEdit);
@@ -127,7 +115,7 @@ export default function Details() {
                 <button className="arrow-icon" >
                     <ArrowLeft size={55} />
                 </button>
-                <p>back to tasklist</p>
+                <p>back to task list</p>
             </div>
             <div className='page-container-details'>
                 <div className='details global-container'>
@@ -169,7 +157,7 @@ export default function Details() {
                                     priority:
                                     <SelectElement
                                         name="priority"
-                                        value={inputValues.priority} // Change this line
+                                        value={inputValues.priority}
                                         placeholder="priority"
                                         options={[
                                             { value: 3, label: 'low' },
